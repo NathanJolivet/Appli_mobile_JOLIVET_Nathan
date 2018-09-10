@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="PAGE TITLE"
+                android:textSize="18dp" />
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/fastandfurious" />
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="A PROPOS DU FILM"
+                    android:textSize="13dp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/common"
+                        android:layout_width="120dp"
+                        android:layout_height="fill_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingVertical="3dp"
+                        android:text="Titre" />
+
+                    <TextView
+                        style="@style/common"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center_vertical"
+                        android:text="Fast and Furious 8" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/common"
+                        android:layout_width="120dp"
+                        android:layout_height="fill_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingVertical="3dp"
+                        android:text="Titre d'origine" />
+
+                    <TextView
+                        style="@style/common"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center_vertical"
+                        android:text="Fast and Furious 8" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/common"
+                        android:layout_width="120dp"
+                        android:layout_height="fill_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingVertical="3dp"
+                        android:text="Description" />
+
+                    <TextView
+                        style="@style/common"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center_vertical"
+                        android:text="Dom recoit la visite d'une femme mysterieuse qui va l'entrainer dans le monde de la criminalité. L'ancienne équipe va alors se reformer afin de l'arreter et de ramener à la maison l'homme qui à fait d'eux une famille." />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/common"
+                        android:layout_width="120dp"
+                        android:layout_height="fill_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingVertical="3dp"
+                        android:text="Mot clés" />
+
+                    <TextView
+                        style="@style/common"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center_vertical"
+                        android:text="Rapide, mysterieux, dangereux" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <!--
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    -->
+
+</android.support.constraint.ConstraintLayout>
