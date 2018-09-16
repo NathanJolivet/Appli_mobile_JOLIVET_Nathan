@@ -221,24 +221,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/darkblue"
-        android:gravity="bottom"
+        android:focusableInTouchMode="true"
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editTextZone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:backgroundTint="@color/white"
-            android:ems="10"
             android:hint="Say something ..."
-            android:inputType="text"
             android:paddingHorizontal="10dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white" />
 
         <ImageButton
-            android:id="@+id/btnSend"
+            android:id="@+id/btn_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -250,7 +248,7 @@
     <com.adeneo.lab1.tp1_application.appBarWidget
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:backTitle="back title"
+        app:backTitle="Retour"
         app:mainTitle="Fast and Furious 8">
 
     </com.adeneo.lab1.tp1_application.appBarWidget>
