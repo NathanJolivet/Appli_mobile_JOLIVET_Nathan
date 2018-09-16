@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView commentaires;
     private LinearLayout btn_share;
@@ -68,10 +68,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
         //Bouton like
-        if (v.equals(btn_like)){
+        if (v.equals(btn_like)) {
             LinearLayout linearLayout = (LinearLayout) v;
 
-            if(btnLikeColor){
+            if (btnLikeColor) {
                 TextView textView = (TextView) linearLayout.getChildAt(1);
                 textView.setTextColor(getResources().getColor(R.color.black));
 
@@ -82,9 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 button.setColorFilter(getResources().getColor(R.color.blue), PorterDuff.Mode.SRC_OVER);
 
                 btnLikeColor = false;
-            }
-
-            else{
+            } else {
                 TextView textView = (TextView) linearLayout.getChildAt(1);
                 textView.setTextColor(getResources().getColor(R.color.white));
 
@@ -100,14 +98,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         //Bouton commentaire
-        if(v.equals(btn_comment)){
-            if(editTextZone.hasFocus()){
+        if (v.equals(btn_comment)) {
+            if (editTextZone.hasFocus()) {
                 editTextZone.clearFocus();
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(editTextZone.getWindowToken(), 0);
-            }
-
-            else{
+            } else {
                 editTextZone.requestFocus();
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 inputMethodManager.showSoftInput(editTextZone, InputMethodManager.SHOW_IMPLICIT);
@@ -115,17 +111,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         //Bouton Retour et quitter
-        if(v.equals(btn_back) || v.equals(btn_close)){
+        if (v.equals(btn_back) || v.equals(btn_close)) {
             MainActivity.this.finish();
         }
 
-        if(v.equals(btn_send)){
+        if (v.equals(btn_send)) {
 
             String message;
 
-            if(firstComment){
+            if (firstComment) {
                 message = editTextZone.getText().toString();
-                if(message.length()>0) {
+                if (message.length() > 0) {
                     zoneCommentaire.setText(null);
 
                     zoneCommentaire.setTypeface(null, Typeface.NORMAL);
@@ -133,20 +129,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     firstComment = false;
                 }
-            }
-
-            else {
+            } else {
                 String ancienCommentaire = zoneCommentaire.getText().toString();
                 message = ancienCommentaire + "\n\n" + editTextZone.getText().toString();
             }
 
-            if(editTextZone.getText().length()>0){
+            if (editTextZone.getText().length() > 0) {
                 zoneCommentaire.setText(message);
                 editTextZone.getText().clear();
-
+/*
                 LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) zoneCommentaire.getLayoutParams();
                 params.height = zoneCommentaire.getHeight() + 46;
                 zoneCommentaire.setLayoutParams(params);
+                */
             }
         }
     }
