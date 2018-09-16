@@ -2,9 +2,11 @@ package com.adeneo.lab1.tp1_application;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -25,7 +27,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout btn_back;
     private EditText editTextZone;
     private ImageButton btn_send;
+    private TextView zoneCommentaire;
+
     private boolean btnLikeColor = true;
+    private boolean firstComment = true;
 
 
     @Override
@@ -54,12 +59,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_send = findViewById(R.id.btn_send);
         btn_send.setOnClickListener(this);
 
+        zoneCommentaire = findViewById(R.id.zoneCommentaire);
+
     }
 
 
     @Override
     public void onClick(View v) {
 
+        //Bouton like
         if (v.equals(btn_like)){
             LinearLayout linearLayout = (LinearLayout) v;
 
@@ -91,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
+        //Bouton commentaire
         if(v.equals(btn_comment)){
             if(editTextZone.hasFocus()){
                 editTextZone.clearFocus();
@@ -105,8 +114,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
+        //Bouton Retour et quitter
         if(v.equals(btn_back) || v.equals(btn_close)){
             MainActivity.this.finish();
+        }
+
+        if(v.equals(btn_send)){
+
+            String message;
+
+            if(firstComment){
+                message = editTextZone.getText().toString();
+                if(message.length()>0) {
+                    zoneCommentaire.setText(null);
+
+                    zoneCommentaire.setTypeface(null, Typeface.NORMAL);
+                    zoneCommentaire.setGravity(Gravity.NO_GRAVITY);
+
+                    firstComment = false;
+                }
+            }
+
+            else {
+                String ancienCommentaire = zoneCommentaire.getText().toString();
+                message = ancienCommentaire + "\n\n" + editTextZone.getText().toString();
+            }
+
+            if(editTextZone.getText().length()>0){
+                zoneCommentaire.setText(message);
+                editTextZone.getText().clear();
+
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) zoneCommentaire.getLayoutParams();
+                params.height = zoneCommentaire.getHeight() + 46;
+                zoneCommentaire.setLayoutParams(params);
+            }
         }
     }
 

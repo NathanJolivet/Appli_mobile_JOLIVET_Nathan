@@ -204,7 +204,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/commentaires"
+                android:id="@+id/zoneCommentaire"
                 style="@style/lineTitle"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
@@ -229,11 +229,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:backgroundTint="@color/white"
             android:hint="Say something ..."
             android:paddingHorizontal="10dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:backgroundTint="@color/white" />
+            android:textColorHint="@color/white" />
 
         <ImageButton
             android:id="@+id/btn_send"
