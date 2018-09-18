@@ -2,11 +2,11 @@ package com.adeneo.lab1.tp1_application.activities;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -16,10 +16,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.adeneo.lab1.tp1_application.R;
+import com.adeneo.lab1.tp1_application.adapters.CategoryAdapter;
+import com.adeneo.lab1.tp1_application.adapters.CommentAdapter;
+import com.adeneo.lab1.tp1_application.objects.Comment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView commentaires;
     private LinearLayout btn_share;
     private LinearLayout btn_comment;
     private LinearLayout btn_like;
@@ -27,10 +32,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout btn_back;
     private EditText editTextZone;
     private ImageButton btn_send;
-    private TextView zoneCommentaire;
+    //    private TextView default_zoneCom;
+    private RecyclerView zoneCommentaire;
 
+    //    private List<Comment> comments = new ArrayList<>();
     private boolean btnLikeColor = true;
-    private boolean firstComment = true;
+//    private boolean firstComment = true;
 
 
     @Override
@@ -59,7 +66,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_send = findViewById(R.id.btn_send);
         btn_send.setOnClickListener(this);
 
+
+        //       default_zoneCom = findViewById(R.id.default_zoneCom);
+
         zoneCommentaire = findViewById(R.id.zoneCommentaire);
+        CommentAdapter commentAdapter = new CommentAdapter();
+        this.zoneCommentaire.setAdapter(commentAdapter);
+        this.zoneCommentaire.setLayoutManager(new LinearLayoutManager(this));
+        this.zoneCommentaire.setNestedScrollingEnabled(false);
+        this.zoneCommentaire.getAdapter().notifyDataSetChanged();
+
+        Comment comment = new Comment("misterV", "Trop bien LOL !", "avatar");
+        Comment comment2 = new Comment("LeCrapeauDu74", "Pas ouf, pas assez d'action", "avatar");
+
+        commentAdapter.addComment(comment);
+        commentAdapter.addComment(comment2);
+        commentAdapter.notifyDataSetChanged();
+
 
     }
 
@@ -115,35 +138,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             MainActivity.this.finish();
         }
 
+        //Bouton envoyer
         if (v.equals(btn_send)) {
 
             String message;
 
-            if (firstComment) {
-                message = editTextZone.getText().toString();
-                if (message.length() > 0) {
-                    zoneCommentaire.setText(null);
+            message = editTextZone.getText().toString();
+            if (message.length() > 0) {
 
-                    zoneCommentaire.setTypeface(null, Typeface.NORMAL);
-                    zoneCommentaire.setGravity(Gravity.NO_GRAVITY);
+                Comment comment = new Comment("Philippe", message, "avatar");
 
-                    firstComment = false;
-                }
-            } else {
-                String ancienCommentaire = zoneCommentaire.getText().toString();
-                message = ancienCommentaire + "\n\n" + editTextZone.getText().toString();
-            }
+                CommentAdapter commentAdapter = (CommentAdapter) zoneCommentaire.getAdapter();
 
-            if (editTextZone.getText().length() > 0) {
-                zoneCommentaire.setText(message);
+                commentAdapter.addComment(comment);
+                commentAdapter.notifyDataSetChanged();
+
                 editTextZone.getText().clear();
-/*
-                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) zoneCommentaire.getLayoutParams();
-                params.height = zoneCommentaire.getHeight() + 46;
-                zoneCommentaire.setLayoutParams(params);
-                */
             }
         }
     }
+
 
 }

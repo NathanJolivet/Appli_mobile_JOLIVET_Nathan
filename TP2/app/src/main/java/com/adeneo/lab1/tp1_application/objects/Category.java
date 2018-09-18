@@ -1,4 +1,4 @@
-package com.adeneo.lab1.tp1_application;
+package com.adeneo.lab1.tp1_application.objects;
 
 public class Category {
 

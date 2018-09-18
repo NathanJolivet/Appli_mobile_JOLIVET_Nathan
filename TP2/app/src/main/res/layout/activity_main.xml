@@ -202,17 +202,27 @@
 
 
             </LinearLayout>
-
-
-            <TextView
-                android:id="@+id/zoneCommentaire"
-                style="@style/lineTitle"
+            <!--
+                        <TextView
+                            android:id="@+id/default_zoneCom"
+                            style="@style/lineTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            android:background="@color/grey"
+                            android:gravity="center"
+                            android:text="Liste de commentaire" />
+            -->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@color/grey"
-                android:gravity="center"
-                android:text="Liste de commentaire" />
+                android:layout_height="wrap_content">
 
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/zoneCommentaire"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+            </RelativeLayout>
 
         </LinearLayout>
 

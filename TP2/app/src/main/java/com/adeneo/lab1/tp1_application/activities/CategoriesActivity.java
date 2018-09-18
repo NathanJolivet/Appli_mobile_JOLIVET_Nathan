@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.adeneo.lab1.tp1_application.Category;
-import com.adeneo.lab1.tp1_application.CategoryAdapter;
+import com.adeneo.lab1.tp1_application.objects.Category;
+import com.adeneo.lab1.tp1_application.adapters.CategoryAdapter;
 import com.adeneo.lab1.tp1_application.R;
 
 import java.util.ArrayList;
