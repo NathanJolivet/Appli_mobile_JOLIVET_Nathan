@@ -1,6 +1,7 @@
 package com.adeneo.lab1.tp1_application.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         CommentAdapter commentAdapter = new CommentAdapter();
         this.zoneCommentaire.setAdapter(commentAdapter);
         this.zoneCommentaire.setLayoutManager(new LinearLayoutManager(this));
+
         this.zoneCommentaire.setNestedScrollingEnabled(false);
         this.zoneCommentaire.getAdapter().notifyDataSetChanged();
 
@@ -134,8 +136,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         //Bouton Retour et quitter
-        if (v.equals(btn_back) || v.equals(btn_close)) {
+        if (v.equals(btn_close)) {
             MainActivity.this.finish();
+        }
+
+        if(v.equals(btn_back)){
+            Intent intent = new Intent(MainActivity.this, CategoriesActivity.class);
+            startActivity(intent);
         }
 
         //Bouton envoyer

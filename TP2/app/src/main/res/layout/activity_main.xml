@@ -4,12 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.MainActivity"
+    android:background="@color/darkblue">
 
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/saysomething"
+        android:layout_below="@+id/headerTitle">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -229,12 +233,14 @@
     </ScrollView>
 
     <LinearLayout
+        android:id="@+id/saysomething"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/darkblue"
         android:focusableInTouchMode="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <EditText
             android:id="@+id/editTextZone"
@@ -258,6 +264,7 @@
     </LinearLayout>
 
     <com.adeneo.lab1.tp1_application.appBarWidget
+        android:id="@+id/headerTitle"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:backTitle="Retour"

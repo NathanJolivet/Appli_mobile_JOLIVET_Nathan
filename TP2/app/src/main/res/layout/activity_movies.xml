@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/darkblue">
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/movies_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/darkblue"
+        android:layout_below="@+id/appbar">
+
+
+
+    </android.support.v7.widget.RecyclerView>
+
+
+    <com.adeneo.lab1.tp1_application.appBarWidget
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:backTitle="Retour"
+        app:mainTitle="PAGE TITLE">
+
+    </com.adeneo.lab1.tp1_application.appBarWidget>
+
+
+</RelativeLayout>
