@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.adeneo.lab1.tp1_application.R;
+import com.adeneo.lab1.tp1_application.contracts.IItemOnClickManager;
 import com.adeneo.lab1.tp1_application.objects.Category;
 import com.adeneo.lab1.tp1_application.objects.Cell;
 import com.adeneo.lab1.tp1_application.viewholders.CategoryViewHolder;
@@ -25,12 +26,20 @@ public class CellAdapter extends RecyclerView.Adapter {
     int HEADER_CELL = 1;
     int FOOTER_CELL = 2;
 
+    private IItemOnClickManager mgr;
+
+
+    public void setClickManager(IItemOnClickManager mgr) {
+        this.mgr = mgr;
+    }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if(viewType == MOVIE_CELL){
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_movie, parent, false);
             MovieViewHolder movieViewHolder = new MovieViewHolder(view);
+            movieViewHolder.setClickManager(mgr);
             return movieViewHolder;
         }
 

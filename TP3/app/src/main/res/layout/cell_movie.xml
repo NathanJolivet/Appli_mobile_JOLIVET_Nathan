@@ -21,7 +21,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_toRightOf="@+id/avatarComment"
             android:layout_weight="110"
             android:orientation="vertical"
@@ -31,18 +31,20 @@
             <TextView
                 android:id="@+id/titleMovie"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:text="teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest"
                 android:textColor="@color/grey"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:layout_weight="40"/>
 
             <TextView
                 android:id="@+id/descriptionMovie"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_below="@+id/titleMovie"
                 android:text="teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:layout_weight="70"/>
 
         </LinearLayout>
 

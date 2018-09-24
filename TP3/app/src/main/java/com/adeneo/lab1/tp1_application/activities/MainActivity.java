@@ -35,14 +35,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout btn_back;
     private EditText editTextZone;
     private ImageButton btn_send;
-    //    private TextView default_zoneCom;
     private RecyclerView zoneCommentaire;
     private ScrollView scrollView;
+    private TextView mainTitle;
 
-    //    private List<Comment> comments = new ArrayList<>();
+    private TextView tableTitle;
+    private TextView tableOriginalTitle;
+    private TextView tableDescription;
+    private TextView tableKeyWords;
+    private ImageView imageMovie;
+
     private boolean btnLikeColor = true;
-//    private boolean firstComment = true;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +75,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         scrollView = findViewById(R.id.scrollView);
 
+        mainTitle = findViewById(R.id.mainTitle);
 
-        //       default_zoneCom = findViewById(R.id.default_zoneCom);
+        tableTitle = findViewById(R.id.tableTitle);
+
+        tableOriginalTitle = findViewById(R.id.tableOriginalTitle);
+
+        tableDescription = findViewById(R.id.tableDescription);
+
+        tableKeyWords = findViewById(R.id.tableKeyWords);
+
+        imageMovie = findViewById(R.id.imageMovie);
 
         zoneCommentaire = findViewById(R.id.zoneCommentaire);
         CommentAdapter commentAdapter = new CommentAdapter();
@@ -91,6 +103,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Intent i = getIntent();
+
+        String title = i.getStringExtra("Titre");
+        mainTitle.setText(title);
+        tableTitle.setText(title);
+        tableOriginalTitle.setText(title);
+        tableDescription.setText( i.getStringExtra("Description"));
+        imageMovie.setImageResource(i.getIntExtra("Image", 0));
+
+
+    }
 
     @Override
     public void onClick(View v) {
@@ -152,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             message = editTextZone.getText().toString();
             if (message.length() > 0) {
 
-                Comment comment = new Comment("Philippe", message, "avatar");
+                Comment comment = new Comment("Philippe", message, R.drawable.avatar);
 
                 CommentAdapter commentAdapter = (CommentAdapter) zoneCommentaire.getAdapter();
 

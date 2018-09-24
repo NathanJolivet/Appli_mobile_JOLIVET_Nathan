@@ -1,6 +1,7 @@
 package com.adeneo.lab1.tp1_application.activities;
 
 import android.content.Intent;
+import android.graphics.Movie;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.widget.LinearLayout;
 
 import com.adeneo.lab1.tp1_application.R;
 import com.adeneo.lab1.tp1_application.adapters.CellAdapter;
+import com.adeneo.lab1.tp1_application.contracts.IItemOnClickManager;
 import com.adeneo.lab1.tp1_application.manager.MovieManager;
 import com.adeneo.lab1.tp1_application.objects.Cell;
 
@@ -20,7 +22,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CellsActivity extends AppCompatActivity implements View.OnClickListener {
+public class CellsActivity extends AppCompatActivity implements View.OnClickListener, IItemOnClickManager {
 
     private RecyclerView movies_recyclerView;
     private List<Cell> movies = new ArrayList<>();
@@ -49,6 +51,7 @@ public class CellsActivity extends AppCompatActivity implements View.OnClickList
 */
         movies_recyclerView = findViewById(R.id.movies_recyclerView);
         CellAdapter cellAdapter = new CellAdapter();
+        cellAdapter.setClickManager(this);
         movies_recyclerView.setAdapter(cellAdapter);
         movies_recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -101,12 +104,19 @@ public class CellsActivity extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(CellsActivity.this, CategoriesActivity.class);
             startActivity(intent);
         }
-/*
-        if(v.equals(buttonMovie)){
-            Intent intent = new Intent(CellsActivity.this, MainActivity.class);
-            startActivity(intent);
-        }
-*/
+
     }
 
+    @Override
+    public void onItemClicked(Object obj) {
+
+        Cell movie = (Cell) obj;
+
+        Intent intent = new Intent(CellsActivity.this, MainActivity.class);
+        intent.putExtra("Titre", movie.getTitre());
+        intent.putExtra("Description", movie.getDescription());
+        intent.putExtra("Image", movie.getImage());
+
+        startActivity(intent);
+    }
 }

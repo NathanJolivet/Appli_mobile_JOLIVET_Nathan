@@ -60,7 +60,6 @@ public class CategoriesActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         if (v.equals(btn_close) || v.equals(btn_back)) {
             CategoriesActivity.this.finish();
-            //System.exit(0);
         }
 /*
         if (v.equals(categoryName)) {

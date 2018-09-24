@@ -4,9 +4,9 @@ public class Comment {
 
     private String pseudo;
     private String message;
-    private String avatar;
+    private int avatar;
 
-    public Comment(String pseudo, String message, String avatar){
+    public Comment(String pseudo, String message, int avatar){
         this.pseudo = pseudo;
         this.message = message;
         this.avatar = avatar;
@@ -20,7 +20,7 @@ public class Comment {
         return message;
     }
 
-    public String getAvatar() {
+    public int getAvatar() {
         return avatar;
     }
 }
