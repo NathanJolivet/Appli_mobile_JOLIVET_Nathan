@@ -16,13 +16,13 @@
     </android.support.v7.widget.RecyclerView>
 
 
-    <com.adeneo.lab1.tp1_application.appBarWidget
+    <com.adeneo.lab1.tp1_application.widget.appBarWidget
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:backTitle="Retour"
         app:mainTitle="CATEGORIES">
 
-    </com.adeneo.lab1.tp1_application.appBarWidget>
+    </com.adeneo.lab1.tp1_application.widget.appBarWidget>
 
 
 </RelativeLayout>

@@ -14,11 +14,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.adeneo.lab1.tp1_application.R;
 import com.adeneo.lab1.tp1_application.adapters.CategoryAdapter;
 import com.adeneo.lab1.tp1_application.adapters.CommentAdapter;
+import com.adeneo.lab1.tp1_application.manager.MovieManager;
 import com.adeneo.lab1.tp1_application.objects.Comment;
 
 import java.util.ArrayList;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton btn_send;
     //    private TextView default_zoneCom;
     private RecyclerView zoneCommentaire;
+    private ScrollView scrollView;
 
     //    private List<Comment> comments = new ArrayList<>();
     private boolean btnLikeColor = true;
@@ -67,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_send = findViewById(R.id.btn_send);
         btn_send.setOnClickListener(this);
 
+        scrollView = findViewById(R.id.scrollView);
+
 
         //       default_zoneCom = findViewById(R.id.default_zoneCom);
 
@@ -78,11 +83,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.zoneCommentaire.setNestedScrollingEnabled(false);
         this.zoneCommentaire.getAdapter().notifyDataSetChanged();
 
-        Comment comment = new Comment("misterV", "Trop bien LOL !", "avatar");
-        Comment comment2 = new Comment("LeCrapeauDu74", "Pas ouf, pas assez d'action", "avatar");
+        List<Comment> comments = MovieManager.getInstance().getComments();
 
-        commentAdapter.addComment(comment);
-        commentAdapter.addComment(comment2);
+        commentAdapter.setComments(comments);
         commentAdapter.notifyDataSetChanged();
 
 
@@ -136,13 +139,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         //Bouton Retour et quitter
-        if (v.equals(btn_close)) {
+        if (v.equals(btn_close) || v.equals(btn_back)) {
             MainActivity.this.finish();
-        }
-
-        if(v.equals(btn_back)){
-            Intent intent = new Intent(MainActivity.this, CellsActivity.class);
-            startActivity(intent);
+            //System.exit(0);
         }
 
         //Bouton envoyer
@@ -161,7 +160,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 commentAdapter.notifyDataSetChanged();
 
                 editTextZone.getText().clear();
+
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(editTextZone.getWindowToken(), 0);
+
+                scrollView.fullScroll(scrollView.FOCUS_DOWN);
             }
+
+
         }
     }
 

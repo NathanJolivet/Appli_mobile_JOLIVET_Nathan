@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.adeneo.lab1.tp1_application.manager.MovieManager;
 import com.adeneo.lab1.tp1_application.objects.Category;
 import com.adeneo.lab1.tp1_application.adapters.CategoryAdapter;
 import com.adeneo.lab1.tp1_application.R;
@@ -42,21 +43,8 @@ public class CategoriesActivity extends AppCompatActivity implements View.OnClic
         this.categories_recyclerView = findViewById(R.id.categories_recyclerView);
 
         List<Category> categories = new ArrayList<>();
-        categories.add(new Category("Humour"));
-        categories.add(new Category("Film d'horreur"));
-        categories.add(new Category("Comédie"));
-        categories.add(new Category("Action"));
-        categories.add(new Category("Aventure"));
-        categories.add(new Category("Humour"));
-        categories.add(new Category("Documentaires"));
-        categories.add(new Category("Policier"));
-        categories.add(new Category("Amour"));
-        categories.add(new Category("Comédies musicales"));
-        categories.add(new Category("Dessins animés"));
-        categories.add(new Category("Francais"));
-        categories.add(new Category("Manga"));
-        categories.add(new Category("Science fiction"));
-        categories.add(new Category("Fantastique"));
+
+        categories = MovieManager.getInstance().getCategories();
 
         CategoryAdapter categoryAdapter = new CategoryAdapter();
         categoryAdapter.setCategories(categories);
@@ -72,6 +60,7 @@ public class CategoriesActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         if (v.equals(btn_close) || v.equals(btn_back)) {
             CategoriesActivity.this.finish();
+            //System.exit(0);
         }
 /*
         if (v.equals(categoryName)) {
