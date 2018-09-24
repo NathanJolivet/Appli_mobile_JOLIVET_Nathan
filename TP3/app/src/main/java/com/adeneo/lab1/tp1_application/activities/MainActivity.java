@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ import com.adeneo.lab1.tp1_application.R;
 import com.adeneo.lab1.tp1_application.adapters.CategoryAdapter;
 import com.adeneo.lab1.tp1_application.adapters.CommentAdapter;
 import com.adeneo.lab1.tp1_application.manager.MovieManager;
+import com.adeneo.lab1.tp1_application.objects.Cell;
 import com.adeneo.lab1.tp1_application.objects.Comment;
 
 import java.util.ArrayList;
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tableKeyWords;
     private ImageView imageMovie;
 
+    private int filmId;
+
     private boolean btnLikeColor = true;
 
     @Override
@@ -58,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_comment = findViewById(R.id.btn_comment);
         btn_comment.setOnClickListener(this);
 
-        btn_share = findViewById(R.id.btn_comment);
+        btn_share = findViewById(R.id.btn_share);
         btn_share.setOnClickListener(this);
 
         btn_close = findViewById(R.id.btn_close);
@@ -115,6 +119,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tableOriginalTitle.setText(title);
         tableDescription.setText( i.getStringExtra("Description"));
         imageMovie.setImageResource(i.getIntExtra("Image", 0));
+
+        filmId = i.getIntExtra("Id", 0);
 
 
     }
@@ -195,8 +201,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 scrollView.fullScroll(scrollView.FOCUS_DOWN);
             }
 
-
         }
+
+        //Bouton partager
+        if(v.equals(btn_share)){
+            String shareText = ((Cell)MovieManager.getInstance().getMovieById(filmId)).getTitre();
+
+            Uri imageUri = Uri.parse("android.resource://" + getPackageName()
+                    + "/drawable/" + "fastandfurious8");
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
+            shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+            shareIntent.setType("image/jpeg");
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(Intent.createChooser(shareIntent, "send"));
+        }
+
     }
 
 

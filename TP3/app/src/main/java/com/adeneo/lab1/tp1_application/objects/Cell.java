@@ -5,6 +5,7 @@ public class Cell {
     private String titre;
     private String description;
     private int image;
+    private int id;
     private CellType cellType;
 
     public enum CellType {
@@ -23,7 +24,8 @@ public class Cell {
         }
     }
 
-    public Cell(String titre, String description, int image, CellType cellType){
+    public Cell(int id, String titre, String description, int image, CellType cellType){
+        this.id = id;
         this.titre = titre;
         this.description = description;
         this.image = image;
@@ -46,4 +48,11 @@ public class Cell {
         return cellType;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

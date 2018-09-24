@@ -69,28 +69,34 @@ public class CellsActivity extends AppCompatActivity implements View.OnClickList
         movies = movies.stream().sorted((Comparator.comparing(Cell::getTitre))).collect(Collectors.toList());
         int nbFilms = 0;
 
-        Cell header = new Cell(movies.get(0).getTitre().substring(0, 1), null, 0, Cell.CellType.HEADER);
+        Cell header = new Cell(0, movies.get(0).getTitre().substring(0, 1), null, 0, Cell.CellType.HEADER);
         movies.add(0, header);
+
         nbFilms++;
 
         for (int i = 2; i < movies.size(); i++) {
             if (!movies.get(i).getTitre().substring(0, 1).equals(header.getTitre())) {
 
-                Cell footer = new Cell(nbFilms + " films", null, 0, Cell.CellType.FOOTER);
+
+                Cell footer = new Cell(0,nbFilms + " films", null, 0, Cell.CellType.FOOTER);
                 nbFilms = 0;
 
                 movies.add(i, footer);
                 i++;
 
-                header = new Cell(movies.get(i).getTitre().substring(0, 1), null, 0, Cell.CellType.HEADER);
+                header = new Cell(0,movies.get(i).getTitre().substring(0, 1), null, 0, Cell.CellType.HEADER);
                 movies.add(i, header);
                 i++;
+
             }
             nbFilms++;
 
         }
-        Cell footer = new Cell(nbFilms + " films", null, 0, Cell.CellType.FOOTER);
+
+        Cell footer = new Cell(0,nbFilms + " films", null, 0, Cell.CellType.FOOTER);
         movies.add(footer);
+
+
     }
 
     @Override
@@ -116,6 +122,7 @@ public class CellsActivity extends AppCompatActivity implements View.OnClickList
         intent.putExtra("Titre", movie.getTitre());
         intent.putExtra("Description", movie.getDescription());
         intent.putExtra("Image", movie.getImage());
+        intent.putExtra("Id", movie.getId());
 
         startActivity(intent);
     }
