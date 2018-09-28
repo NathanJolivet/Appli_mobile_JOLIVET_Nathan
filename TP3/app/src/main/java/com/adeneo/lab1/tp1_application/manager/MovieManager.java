@@ -33,12 +33,12 @@ public class MovieManager {
         categories.add(new Category("Fantastique"));
 
         movies.add(new Cell(0, "Fast and furious 8", "Maintenant que Dom et Letty sont en lune de miel, que Brian et Mia se sont rangés et que le reste de l’équipe a été disculpé, la bande de globetrotteurs retrouve un semblant de vie normale. Mais quand une mystérieuse femme entraîne Dom dans le monde de la criminalité, ce dernier ne pourra éviter de trahir ses proches qui vont faire face à des épreuves qu’ils n’avaient jamais rencontrées jusqu’alors.", R.drawable.fastandfurious8, Cell.CellType.MOVIE));
-        movies.add(new Cell(1, "Star wars 10", "petit film sympa, un peu d'action donc pas degueu", R.drawable.fastandfurious8, Cell.CellType.MOVIE));
-        movies.add(new Cell(2, "Avengers", "petit film sympa, un peu d'action donc pas degueu", R.drawable.fastandfurious8, Cell.CellType.MOVIE));
-        movies.add(new Cell(3, "Babysitting", "petit film sympa, un peu d'action donc pas degueu", R.drawable.fastandfurious8, Cell.CellType.MOVIE));
-        movies.add(new Cell(4, "Cringe", "petit film sympa, un peu d'action donc pas degueu", R.drawable.fastandfurious8, Cell.CellType.MOVIE));
-        movies.add(new Cell(5, "Zoe la nerveuse", "petit film sympa, un peu d'action donc pas degueu", R.drawable.fastandfurious8, Cell.CellType.MOVIE));
-        movies.add(new Cell(6, "Bananasplit", "petit film sympa, un peu d'action donc pas degueu", R.drawable.fastandfurious8, Cell.CellType.MOVIE));
+        movies.add(new Cell(1, "Star wars 10", "film sympa, un peu d'action et d'amour, apprecié par toute catégorie d'âge", R.drawable.fastandfurious8, Cell.CellType.MOVIE));
+        movies.add(new Cell(2, "Avengers", "film sympa, un peu d'action et d'amour, apprecié par toute catégorie d'âge", R.drawable.fastandfurious8, Cell.CellType.MOVIE));
+        movies.add(new Cell(3, "Babysitting", "film sympa, un peu d'action et d'amour, apprecié par toute catégorie d'âge", R.drawable.fastandfurious8, Cell.CellType.MOVIE));
+        movies.add(new Cell(4, "Cringe", "film sympa, un peu d'action et d'amour, apprecié par toute catégorie d'âge", R.drawable.fastandfurious8, Cell.CellType.MOVIE));
+        movies.add(new Cell(5, "Zoe la nerveuse", "film sympa, un peu d'action et d'amour, apprecié par toute catégorie d'âge", R.drawable.fastandfurious8, Cell.CellType.MOVIE));
+        movies.add(new Cell(6, "Bananasplit", "film sympa, un peu d'action et d'amour, apprecié par toute catégorie d'âge", R.drawable.fastandfurious8, Cell.CellType.MOVIE));
 
         comments.add(new Comment("misterV", "Trop bien LOL !", R.drawable.avatar));
         comments.add(new Comment("LeCrapeauDu74", "Pas ouf, pas assez d'action", R.drawable.avatar));
